@@ -1,2 +1,1 @@
-# ddrmu-inventory
-Inventory system for DRRMU
+# LIBRARY MANANGEMENT SYSTEM
