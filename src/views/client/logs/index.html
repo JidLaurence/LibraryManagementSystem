@@ -1,0 +1,345 @@
+<div class="wrapper">
+  {{> client-sidenav logsActives=true}}
+  <div class="content-page">
+    <div class="content">
+      {{> client-topnav}}
+
+      <!-- Start Content-->
+      <div class="container-fluid">
+        <!-- start page title -->
+        <div class="row mt-5">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="row mb-2">
+                  <div class="col-sm-12">
+
+                  </div>
+                </div>
+
+                <div class="table-responsive mt-4">
+                  <table
+                    class="table table-centered table-striped dt-responsive nowrap w-100"
+                    id="data-datatable"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Student Id</th>
+                        <th>Student</th>
+                        <th>Email</th>
+                        <th>In date</th>
+                        <th>Out date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#each users}}
+                      <tr id="{{this._id}}">
+                        <td class="table-user">
+                          <img
+                            src="{{this.user_id.profile_img}}"
+                            alt="table-user"
+                            class="me-2 rounded-circle"
+                          />
+                          <a
+                            href="javascript:void(0);"
+                            class="text-body fw-semibold"
+                            >{{this.user_id.studentId}}</a
+                          >
+                        </td>
+                        <td>
+                          {{this.user_id.firstname}}
+                            {{this.user_id.lastname}}
+                        </td>
+                        <td>{{this.user_id.email}}</td>
+                        <td>{{moment this.in 'LLL'}}</td>
+                        <td>{{moment this.out 'LLL'}}</td>
+                      </tr>
+                      {{/each}}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- end card-body-->
+            </div>
+            <!-- end card-->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- container -->
+    </div>
+  </div>
+</div>
+<!-- ADD MODAL -->
+<div
+  id="add-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body pt-5">
+        <form action="/admin/user/add" method="POST">
+          <div class="mb-3">
+            <label for="emailaddress" class="form-label">Email address</label>
+            <input
+              name="email"
+              class="form-control"
+              type="email"
+              required
+              placeholder="Juan@gmail.com"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              name="password"
+              class="form-control"
+              type="password"
+              required
+              placeholder="Enter password"
+            />
+          </div>
+
+          <div class="mb-3 text-center">
+            <button class="btn btn-primary">Add {{credentials.type}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UPDATE MODAL -->
+{{#each users}}
+<div
+  id="update-modal-{{this._id}}"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog  modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        {{#ifStatement this.scope 'client'}}
+        <div id="{{this._id}}">
+          <center>
+            <h4>Agusan del sur COllege of Agriculture & Technology</h4>
+            <p>Bunawan, Agusan del Sur</p>
+            <h3>Library Card</3>
+            <br>
+            <h1>{{this.firstname}} {{this.lastname}}</h1>
+          </center>
+          <center>
+            <div class="row mt-2">
+              <div style="display: inline-block;  width: 200px;">
+                <img
+                src="{{../credentials.logo}}"
+                class="img-fluid rounded-circle"
+                style="width: 130px"
+              />
+            </div>
+              <div style="display: inline-block;  width: 300px; margin-top: 50px;">
+                <center>
+                  <hr>
+                  <p>holder's signature</p>
+                  <br>
+                  <p>{{this.address}}</p>
+                </center>
+              </div>
+              <div style="display: inline-block;  width: 200px;">
+                <img
+                src="{{../credentials.profile_img}}"
+                class="img-fluid rounded-circle"
+                style="width: 130px;float:right"
+              />
+              </div>
+          </div>
+          </center>
+
+        <hr>
+        <div>
+          <center>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam animi odit ex quidem incidunt, exercitationem voluptates, debitis cupiditate dolorum quo sequi blanditiis reiciendis atque fuga saepe sunt eveniet? Incidunt, excepturi.</p>
+            <br>
+            <div id="barcode-{{this._id}}">
+
+            </div>
+          </center>
+        </div>
+        </div>
+        <center>
+          <button id="btn-{{this._id}}" onclick="printID('{{this._id}}')"  id="btnprint" class="btn btn-primary mt-4">PRINT STUDENT ID</button>
+        </center>
+        {{/ifStatement}} {{#ifStatement this.scope 'admin'}}
+        <div class="text-center my-4">
+          <span><img src="{{this.profile_img}}" class="img-fluid" /></span>
+        </div>
+        <form action="/admin/user/update" method="POST">
+          <div class="mb-3">
+            <input name="_id" type="hidden" value="{{this._id}}" />
+            <label for="emailaddress" class="form-label">Email address</label>
+            <input
+              name="email"
+              class="form-control"
+              type="email"
+              required
+              placeholder="Juan@gmail.com"
+              value="{{this.email}}"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              name="password"
+              class="form-control"
+              type="password"
+              placeholder="Enter password to change"
+            />
+          </div>
+
+          <div class="mb-3 text-center">
+            <button class="btn btn-primary">Add {{credentials.type}}</button>
+          </div>
+        </form>
+
+        {{/ifStatement}}
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}
+
+<div
+  id="change-logo-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body my-4">
+        <form
+          action="/admin/profile/upload-logo"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <div
+            class="col-sm-12 dropzone"
+            id="myAwesomeDropzone"
+            data-plugin="dropzone"
+            data-previews-container="#file-previews"
+            data-upload-preview-template="#uploadPreviewTemplate"
+          >
+            <center>
+              <img
+                class="img-fluid"
+                id="imageResult"
+                src="{{credentials.logo}}"
+                class="rounded-circle"
+              />
+            </center>
+            <input
+              id="upload"
+              name="img"
+              type="file"
+              accept=".png,.jpg,.jpeg"
+              onchange="readURL(this);"
+              class="form-control border-0"
+            />
+          </div>
+          <div class="text-center mt-4">
+            <button class="btn btn-primary">Update profile</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /*  ==========================================
+    SHOW UPLOADED IMAGE
+* ========================================== */
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $("#imageResult").attr("src", e.target.result);
+        $("#imgdatainput").val(e.target.result);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $(function () {
+    $("#upload").on("change", function () {
+      readURL(input);
+    });
+  });
+
+  /*  ==========================================
+    SHOW UPLOADED IMAGE NAME
+* ========================================== */
+  var input = document.getElementById("upload");
+  var infoArea = document.getElementById("upload-label");
+
+  input.addEventListener("change", showFileName);
+  function showFileName(event) {
+    var input = event.srcElement;
+    var fileName = input.files[0].name;
+    infoArea.textContent = "File name: " + fileName;
+  }
+</script>
+<!--QRCODE CDN-->
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+<script>
+      function searchBarcode(val){
+        if(val){
+          $(document).ready(function () {
+          $.ajax({
+            type: "POST",
+            url: `/admin/user/logs`,
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(val),
+            success: function (result) {
+              console.log(result)
+              window.location.href =
+              `/admin/logs?message=${result.message}.&alert=${result.type}`;
+            },
+          });
+        });
+        }
+    }
+
+
+  function printID(id){
+    $(`#btn-${id}`).hide();
+    window.print();
+    $(`#btn-${id}`).show();
+  }
+  function showCode(_id, barcode) {
+    //REMOVE QRCODE & BARCODE
+    $("#div-barcode").remove();
+    $(`#barcode-${_id}`).append(
+      `<div id="div-barcode"><svg id="barcode"></svg></div>`
+    );
+    //DISPLAY BARCODE
+    JsBarcode("#barcode", barcode, {
+      format: "CODE128",
+      text: barcode,
+      width: 2,
+      height: 50,
+      displayValue: true,
+    });
+  
+  }
+  </script>
