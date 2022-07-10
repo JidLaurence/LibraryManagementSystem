@@ -3,20 +3,26 @@
   <!-- LOGO -->
   <a href="index.html" class="logo text-center logo-light">
     <span class="logo-lg">
-      <img src="/assets/images/logo.png" alt="" height="16" />
+      <img src="{{credentials.logo}}" alt="" height="30" 
+      class="img-fluid rounded-circle"/>
+      
     </span>
     <span class="logo-sm">
-      <img src="/assets/images/logo_sm.png" alt="" height="16" />
+      <img src="{{credentials.logo}}" alt="" height="30" 
+      class="img-fluid rounded-circle"/>
     </span>
   </a>
 
   <!-- LOGO -->
   <a href="index.html" class="logo text-center logo-dark">
     <span class="logo-lg">
-      <img src="/assets/images/logo-dark.png" alt="" height="16" />
+      <img src="/assets/images/asscatlogo.jpg" 
+      class="img-fluid rounded-circle" alt="" height="30" />
+      
     </span>
     <span class="logo-sm">
-      <img src="/assets/images/logo_sm_dark.png" alt="" height="16" />
+      <img src="/assets/images/asscatlogo.jpg" 
+      class="img-fluid rounded-circle" alt="" height="30" />
     </span>
   </a>
 
@@ -56,7 +62,7 @@
           class="side-nav-link {{#if stocks}}customize-active{{/if}}"
         >
           <i class="mdi mdi-cart-outline"></i>
-          <span> Stocks </span>
+          <span>Book Stocks </span>
         </a>
       </li>
       <li class="side-nav-item">
@@ -65,7 +71,7 @@
           class="side-nav-link {{#if usersActive}}customize-active{{/if}}"
         >
           <i class="uil-user"></i>
-          <span> Staff/Student </span>
+          <span> User/Employees </span>
         </a>
       </li>
       <li class="side-nav-item">
@@ -84,6 +90,7 @@
         >
           <i class="mdi mdi-cart-check"></i>
           <span> Logs </span>
+         
         </a>
       </li>
     </ul>

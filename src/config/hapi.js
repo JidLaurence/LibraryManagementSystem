@@ -24,7 +24,7 @@ internals.server = new Hapi.Server({ debug: { request: ['error'] } });
 //Setup the connection for the environment
 //
 internals.server.connection({
-  host: Config.env.dev ? 'localhost' : 'localhost',
+  host: Config.env.dev ? '0.0.0.0' : '0.0.0.0',
   port: Config.hapi.port,
   routes: { log: true, cors: true },
 });

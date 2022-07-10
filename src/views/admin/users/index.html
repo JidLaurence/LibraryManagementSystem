@@ -60,7 +60,7 @@
                       <tr id="{{this._id}}">
                         <td class="table-user">
                           <img
-                            src="/assets/images/users/profile.jpg"
+                            src="{{this.profile_img}}"
                             alt="table-user"
                             class="me-2 rounded-circle"
                           />
@@ -192,7 +192,7 @@
         {{#ifStatement this.scope 'client'}}
         <div id="{{this._id}}">
           <center>
-            <h4>Agusan del sur COllege of Agriculture & Technology</h4>
+            <h4>Agusan del sur College of Agriculture & Technology</h4>
             <p>Bunawan, Agusan del Sur</p>
             <h3>Library Card</3>
             <br>
@@ -217,7 +217,7 @@
               </div>
               <div style="display: inline-block;  width: 200px;">
                 <img
-                src="{{../credentials.profile_img}}"
+                src="{{this.profile_img}}"
                 class="img-fluid rounded-circle"
                 style="width: 130px;float:right"
               />
@@ -228,7 +228,7 @@
         <hr>
         <div>
           <center>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam animi odit ex quidem incidunt, exercitationem voluptates, debitis cupiditate dolorum quo sequi blanditiis reiciendis atque fuga saepe sunt eveniet? Incidunt, excepturi.</p>
+            <p>The owner of this card is entitled to use the library resources of the Agusan del Sur State College of Agriculture & Technology. (Subject to ita rules & regulations) and is responsible for all books and other library materials issued.</p>
             <br>
             <div id="barcode-{{this._id}}">
 
@@ -374,7 +374,7 @@
     //REMOVE QRCODE & BARCODE
     $("#div-barcode").remove();
     $(`#barcode-${_id}`).append(
-      `<div id="div-barcode"><svg id="barcode"></svg></div>`
+      `<div id="div-barcode"><svg id="barcode" style="width:300px;height:150px"></svg></div>`
     );
     //DISPLAY BARCODE
     JsBarcode("#barcode", barcode, {
@@ -388,7 +388,7 @@
   }
   function approve(id){
     Swal.fire({
-    title: "Are you sure you want to apprive this student?",
+    title: "Are you sure you want to approve this student?",
     text: "You won't be able to revert this!",
     icon: "warning",
     showCancelButton: true,
