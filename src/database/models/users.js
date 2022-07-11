@@ -22,6 +22,7 @@ const schema = new Mongoose.Schema(
     isDeleted: { type: Boolean, required: true, default: false },
     isStatus: { type: Boolean, required: true, default: false },
     logo: { type: String, default: "/assets/images/users/profile.jpg" },
+    course: { tyoe: String },
   },
   {
     timestamps: true,

@@ -36,14 +36,14 @@
                 <div class="table-responsive">
                   <table
                     class="table table-centered w-100 dt-responsive nowrap"
-                    id="data-datatable"
+                    id="data-datatable-reserved"
                   >
                     <thead class="table-light">
                       <tr>
                         <th class="all">Books</th>
                         <th>Code</th>
                         <th>Quantity</th>
-                        <th>Return item</th>
+                        <th>Status</th>
                         <th style="width: 85px">Action</th>
                       </tr>
                     </thead>
@@ -65,11 +65,11 @@
                         <td>{{this.code}}</td>
                         <td>{{this.total}}</td>
                         <td>
-                          {{#if this.isReturn}}
-                          <span class="badge bg-success">Yes</span>
+                          {{#countBook this.total}}
+                          <span class="badge bg-success">Available</span>
                           {{else}}
-                          <span class="badge bg-danger">No</span>
-                          {{/if}}
+                          <span class="badge bg-danger">Not Available</span>
+                          {{/countBook}}
                         </td>
                         <td class="table-action">
                           <a
@@ -409,4 +409,15 @@
     a.document.close();
     a.print();
   }
+</script>
+
+<script>
+  $(document).ready(function () {
+    //GLOBAL DATA TABLE
+    ("use strict");
+    $("#data-datatable-reserved").DataTable({
+      dom: "Bfrtip",
+      buttons: ["print"],
+    });
+  });
 </script>

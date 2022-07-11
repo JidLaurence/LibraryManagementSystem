@@ -441,6 +441,7 @@ function appendAllSalesToReturn(res, tableName, status, salesBtnName) {
       `<span class="badge badge-${
         status == "pending" ? "warning" : "success"
       }-lighten p-1">${status}</span>`,
+      `<span class="text-success">Reserved</span>`,
       `<div id="viewOrEdit-${res.userId}"></div>`,
     ])
     .draw(false)

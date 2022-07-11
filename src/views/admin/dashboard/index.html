@@ -113,244 +113,243 @@
                 <div
                   class="d-flex justify-content-between align-items-center mb-2"
                 >
-                 <!--- <h4 class="header-title">Top Selling Packages</h4>
+                  <!--- <h4 class="header-title">Top Selling Packages</h4>
                   <a href="javascript:void(0);" class="btn btn-sm btn-link"
                     >Export <i class="mdi mdi-download ms-1"></i
                   ></a> 
                 </div> --->
 
-                <div class="table-responsive">
-                  <table
-                    class="table table-centered table-nowrap table-hover mb-0"
-                  >
-                    <tbody id="top-sales-datatable"></tbody>
-                  </table>
+                  <div class="table-responsive">
+                    <table
+                      class="table table-centered table-nowrap table-hover mb-0"
+                    >
+                      <tbody id="top-sales-datatable"></tbody>
+                    </table>
+                  </div>
+                  <!-- end table-responsive-->
                 </div>
-                <!-- end table-responsive-->
+                <!-- end card-body-->
               </div>
-              <!-- end card-body-->
+              <!-- end card-->
             </div>
-            <!-- end card-->
+            <!-- end col-->
+            <!-- end col-->
+            <!-- end col -->
           </div>
-          <!-- end col-->
-          <!-- end col-->
-          <!-- end col -->
+          <!-- end row -->
         </div>
-        <!-- end row -->
-      </div>
-      <!-- container -->
-    </div>
-  </div>
-</div>
-
-<!-- third party js -->
-<script src="/assets/js/vendor/apexcharts.min.js"></script>
-<script src="/assets/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="/assets/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
-<!-- third party js ends -->
-
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="modal-product"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="myLargeModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myLargeModalLabel">Books</h4>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-hidden="true"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <div class="table-responsive">
-          <table
-            class="table table-centered table-nowrap mb-0"
-            id="data-datatable"
-          >
-            <thead class="table-light">
-              <tr>
-                <th>Name</th>
-                <th>Stocks</th>
-                <th>Quantity</th>
-                <th>Date return</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <div class="text-sm-end">
-          <button class="btn btn-danger" onclick="checkOutProduct()">
-            <i class="mdi mdi-cart-plus me-1"></i>Approved
-          </button>
-        </div>
+        <!-- container -->
       </div>
     </div>
   </div>
-</div>
-<!-- /.modal -->
 
-<!-- SCAN QRCODE Modal -->
-<div
-  class="modal fade"
-  id="scanQrCodeModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-          Scan QR code to accept borrow item
-        </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body pb-5">
-        <div class="row">
-          <div class="col-12">
-            <form action="/admin/qrcode/acceptReturnItem" method="POST">
-              <select
-                name="user_id"
-                class="form-control mb-2"
-                id="usersOption"
-                required
-              >
-                <option value="">Select user</option>
-              </select>
-              <input
-                name="returnDate"
-                type="date"
-                class="form-control mb-3"
-                required
-              />
-              <input
-                name="product_id"
-                type="text"
-                class="form-control"
-                id="product_id_qrcode"
-                required
-                hidden
-              />
-              <button type="submit" id="acceptBorrowProductBtn" hidden>
-                submit
-              </button>
-            </form>
-            <div style="width: 100%" id="reader"></div>
+  <!-- third party js -->
+  <script src="/assets/js/vendor/apexcharts.min.js"></script>
+  <script src="/assets/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+  <script src="/assets/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+  <!-- third party js ends -->
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="modal-product"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myLargeModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myLargeModalLabel">Books</h4>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-hidden="true"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="table-responsive">
+            <table
+              class="table table-centered table-nowrap mb-0"
+              id="data-datatable"
+            >
+              <thead class="table-light">
+                <tr>
+                  <th>Name</th>
+                  <th>Stocks</th>
+                  <th>Quantity</th>
+                  <th>Date return</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="text-sm-end">
+            <button class="btn btn-danger" onclick="checkOutProduct()">
+              <i class="mdi mdi-cart-plus me-1"></i>Approved
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  <!-- /.modal -->
 
-<script>
-  $(document).ready(function () {
-    //data table config
-    dataTable("sales-datatable", 1);
+  <!-- SCAN QRCODE Modal -->
+  <div
+    class="modal fade"
+    id="scanQrCodeModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Scan QR code to accept borrow item
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body pb-5">
+          <div class="row">
+            <div class="col-12">
+              <form action="/admin/qrcode/acceptReturnItem" method="POST">
+                <select
+                  name="user_id"
+                  class="form-control mb-2"
+                  id="usersOption"
+                  required
+                >
+                  <option value="">Select user</option>
+                </select>
+                <input
+                  name="returnDate"
+                  type="date"
+                  class="form-control mb-3"
+                  required
+                />
+                <input
+                  name="product_id"
+                  type="text"
+                  class="form-control"
+                  id="product_id_qrcode"
+                  required
+                  hidden
+                />
+                <button type="submit" id="acceptBorrowProductBtn" hidden>
+                  submit
+                </button>
+              </form>
+              <div style="width: 100%" id="reader"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    //GET ALL PENDING SALES
-    $.ajax({
-      type: "GET",
-      url: `/get/sales/pending/all`,
-      success: function (result) {
-        $("#pendingTask").html(result.cntPending);
-        var Datatable = $("#sales-datatable").DataTable();
-        result.allSales.map((res) => {
-          appendAllSales(res, Datatable, "pending", "Checkout");
-        });
-      },
-    }).fail(function (res) {
-      console.log(res);
-      errorSweetAlert();
-    });
+  <script>
+    $(document).ready(function () {
+      //data table config
+      dataTable("sales-datatable", 1);
 
-    //GET ALL CLIENT USERS
-    $.ajax({
-      type: "GET",
-      url: `/get/all-user`,
-      success: function (result) {
-        result.map((r) => {
-          $(`#usersOption`).append(
-            `<option value="${r._id}">${r.firstname ? r.firstname : r.email} ${
-              r.lastname ? r.lastname : ""
-            }</option>`
-          );
-        });
-        console.log(result);
-      },
-    }).fail(function (res) {
-      console.log(res);
-      errorSweetAlert();
-    });
-  });
-</script>
-
-
-
-<script>
-  $(document).ready(function () {
-    let getDateTotal = "today";
-    totalSalesDashboard();
-
-    $(`#totalGrandSalesDate`).click(function () {
-      totalSalesDashboard();
-    });
-    function totalSalesDashboard() {
-      $(`#top-sales-datatable`).html("");
+      //GET ALL PENDING SALES
       $.ajax({
         type: "GET",
-        url: `/get/total/sales/${getDateTotal}`,
+        url: `/get/sales/pending/all`,
         success: function (result) {
-          $(`#totalGrandSales`).html(result.grandTotal);
-          result.products.map((r) => {
-            appendRowTopSales(r, "top-sales-datatable");
+          $("#pendingTask").html(result.cntPending);
+          var Datatable = $("#sales-datatable").DataTable();
+          result.allSales.map((res) => {
+            appendAllSales(res, Datatable, "pending", "Accept");
           });
         },
       }).fail(function (res) {
+        console.log(res);
         errorSweetAlert();
       });
-      let elem;
-      if (getDateTotal == "today") {
-        elem = `Sales ${getDateTotal} <i class="dripicons-chevron-right m-hover"></i>`;
-        getDateTotal = "all";
-      } else {
-        elem = `<i class="dripicons-chevron-left m-hover"></i> Over${getDateTotal} sales`;
-        getDateTotal = "today";
+
+      //GET ALL CLIENT USERS
+      $.ajax({
+        type: "GET",
+        url: `/get/all-user`,
+        success: function (result) {
+          result.map((r) => {
+            $(`#usersOption`).append(
+              `<option value="${r._id}">${
+                r.firstname ? r.firstname : r.email
+              } ${r.lastname ? r.lastname : ""}</option>`
+            );
+          });
+          console.log(result);
+        },
+      }).fail(function (res) {
+        console.log(res);
+        errorSweetAlert();
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      let getDateTotal = "today";
+      totalSalesDashboard();
+
+      $(`#totalGrandSalesDate`).click(function () {
+        totalSalesDashboard();
+      });
+      function totalSalesDashboard() {
+        $(`#top-sales-datatable`).html("");
+        $.ajax({
+          type: "GET",
+          url: `/get/total/sales/${getDateTotal}`,
+          success: function (result) {
+            $(`#totalGrandSales`).html(result.grandTotal);
+            result.products.map((r) => {
+              appendRowTopSales(r, "top-sales-datatable");
+            });
+          },
+        }).fail(function (res) {
+          errorSweetAlert();
+        });
+        let elem;
+        if (getDateTotal == "today") {
+          elem = `Sales ${getDateTotal} <i class="dripicons-chevron-right m-hover"></i>`;
+          getDateTotal = "all";
+        } else {
+          elem = `<i class="dripicons-chevron-left m-hover"></i> Over${getDateTotal} sales`;
+          getDateTotal = "today";
+        }
+        $(`#totalGrandSalesDate`).html(elem);
       }
-      $(`#totalGrandSalesDate`).html(elem);
+    });
+  </script>
+
+  <script type="text/javascript">
+    function onScanSuccess(qrCodeMessage) {
+      $(`#product_id_qrcode`).val(qrCodeMessage);
+      $("#acceptBorrowProductBtn").click();
     }
-  });
-</script>
 
-<script type="text/javascript">
-  function onScanSuccess(qrCodeMessage) {
-    $(`#product_id_qrcode`).val(qrCodeMessage);
-    $("#acceptBorrowProductBtn").click();
-  }
+    function onScanError(errorMessage) {
+      //handle scan error
+    }
 
-  function onScanError(errorMessage) {
-    //handle scan error
-  }
-
-  var html5QrcodeScanner = new Html5QrcodeScanner("reader", {
-    fps: 10,
-    qrbox: 250,
-  });
-  html5QrcodeScanner.render(onScanSuccess, onScanError);
-</script>
+    var html5QrcodeScanner = new Html5QrcodeScanner("reader", {
+      fps: 10,
+      qrbox: 250,
+    });
+    html5QrcodeScanner.render(onScanSuccess, onScanError);
+  </script>
+</div>

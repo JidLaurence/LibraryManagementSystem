@@ -8,10 +8,10 @@ const { Users, Settings } = require("@models");
 
 internals.index = function (req, reply) {
   if (req.auth.isAuthenticated) {
-    if (req.auth.credentials.scope[0] === "agent") {
-      return reply.redirect("/agent/dashboard");
-    } else if (req.auth.credentials.scope[0] === "manager") {
-      return reply.redirect("/manager/dashboard");
+    if (req.auth.credentials.scope[0] === "client") {
+      return reply.redirect("/client/dashboard");
+    } else if (req.auth.credentials.scope[0] === "admin") {
+      return reply.redirect("/admin/dashboard");
     }
   } else {
     return reply.view("accounts/login.html", {

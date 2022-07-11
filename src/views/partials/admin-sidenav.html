@@ -3,26 +3,40 @@
   <!-- LOGO -->
   <a href="index.html" class="logo text-center logo-light">
     <span class="logo-lg">
-      <img src="{{credentials.logo}}" alt="" height="10" 
-      class="img-fluid rounded-circle"/>
-      
+      <img
+        src="{{credentials.logo}}"
+        alt=""
+        style="width: 50px"
+        class="img-fluid rounded-circle"
+      />
     </span>
     <span class="logo-sm">
-      <img src="{{credentials.logo}}" alt="" height="10" 
-      class="img-fluid rounded-circle"/>
+      <img
+        src="{{credentials.logo}}"
+        alt=""
+        height="10"
+        class="img-fluid rounded-circle"
+      />
     </span>
   </a>
 
   <!-- LOGO -->
   <a href="index.html" class="logo text-center logo-dark">
     <span class="logo-lg">
-      <img src="/assets/images/asscatlogo.jpg" 
-      class="img-fluid rounded-circle" alt="" height="10" />
-      
+      <img
+        src="/assets/images/asscatlogo.jpg"
+        class="img-fluid rounded-circle"
+        alt=""
+        height="10"
+      />
     </span>
     <span class="logo-sm">
-      <img src="/assets/images/asscatlogo.jpg" 
-      class="img-fluid rounded-circle" alt="" height="10" />
+      <img
+        src="/assets/images/asscatlogo.jpg"
+        class="img-fluid rounded-circle"
+        alt=""
+        height="10"
+      />
     </span>
   </a>
 
@@ -85,12 +99,20 @@
       </li>
       <li class="side-nav-item">
         <a
+          href="/admin/reserved"
+          class="side-nav-link {{#if reservedNav}}customize-active{{/if}}"
+        >
+          <i class="mdi mdi-cart-check"></i>
+          <span> Reserved </span>
+        </a>
+      </li>
+      <li class="side-nav-item">
+        <a
           href="/admin/logs"
           class="side-nav-link {{#if logsStudent}}customize-active{{/if}}"
         >
-          <i class="mdi mdi-cart-check"></i>
+          <i class="uil-user"></i>
           <span> Logs </span>
-         
         </a>
       </li>
     </ul>

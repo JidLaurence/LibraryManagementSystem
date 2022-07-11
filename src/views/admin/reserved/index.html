@@ -1,0 +1,74 @@
+<div class="wrapper">
+  {{> admin-sidenav reservedNav=true}}
+  <div class="content-page">
+    <div class="content">
+      {{> admin-topnav}}
+
+      <!-- Start Content-->
+      <div class="container-fluid">
+        <!-- start page title -->
+        <div class="row">
+          <div class="col-12">
+            <div class="page-title-box">
+              <h4 class="page-title">Reserved books</h4>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table
+                    class="table table-centered table-striped dt-responsive nowrap w-100"
+                    id="data-datatable-reserved"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Student Id</th>
+                        <th>Student name</th>
+                        <th>Book name</th>
+                        <th>Qty</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#each sales}}
+                      <tr id="{{this._id}}">
+                        <td>{{this.user_id.studentId}}</td>
+                        <td>{{this.user_id.firstname}} {{this.user_id.lastname}}</td>
+                        <td>{{this.product_id.name}}</td>
+                        <td>{{this.qty}}</td>
+                        <td class="text-success">Reserved</td>
+                        </td>
+                      </tr>
+                      {{/each}}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- end card-body-->
+            </div>
+            <!-- end card-->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- container -->
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $(document).ready(function () {
+  //GLOBAL DATA TABLE
+  ("use strict");
+  $("#data-datatable-reserved").DataTable({   dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ]
+  });
+});
+</script>

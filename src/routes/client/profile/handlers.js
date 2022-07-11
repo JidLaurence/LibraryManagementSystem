@@ -24,6 +24,7 @@ internals.update = async function (req, reply) {
     password: Crypto.encrypt(req.payload.password),
     studentId: req.payload.studentId,
     address: req.payload.address,
+    course: req.payload.course,
   };
   if (_.isEmpty(req.payload.password)) delete payload.password;
   const userUpdate = await Users.findOneAndUpdate(
