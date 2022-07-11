@@ -27,7 +27,6 @@ internals.index = async function (req, reply) {
 
 internals.acceptReturnItem = async function (req, reply) {
   var today = new Date();
-  console.log(req.params._id);
   if (_.isNil(req.params._id)) {
     return reply({ message: "Error invalid sales", type: "danger" });
   }

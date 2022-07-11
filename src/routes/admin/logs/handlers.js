@@ -25,9 +25,7 @@ internals.logs = async function (req, reply) {
         out: today,
       }
     ).lean();
-    console.log(findStudent);
     if (!findStudent) {
-      console.log("create");
       await Logs.create({
         user_id: student._id,
         in: today,

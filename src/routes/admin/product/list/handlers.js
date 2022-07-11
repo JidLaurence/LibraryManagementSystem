@@ -1,7 +1,7 @@
 "use strict";
 
 var internals = {};
-const { Products, Brand, Category, Unit, Stocks } = require("@models");
+const { Products, Brand, Category, Unit, Stocks, Sales } = require("@models");
 const Image = require("@lib/Image");
 const _ = require("lodash");
 const { remove } = require("lodash");
@@ -38,6 +38,38 @@ internals.index = async function (req, reply) {
     r.total = total;
     return r.total ? r.total : (r.total = 0);
   });
+  let condition = {
+    status: "accepted",
+    isAcceptReturn: false,
+    isReturn: true,
+  };
+  let rawProducts = await Sales.aggregate([
+    {
+      $match: condition,
+    },
+    {
+      $group: {
+        _id: "$product_id",
+        total: { $sum: "$qty" },
+      },
+    },
+  ]).sort({ total: -1 });
+
+  products = products.map((p) => {
+    let total = 0,
+      con = false;
+    rawProducts.map((r) => {
+      if (String(p._id) == String(r._id)) {
+        total = p.total - r.total;
+        con = true;
+      }
+    });
+    if (con) {
+      p.total = total;
+    }
+    return p;
+  });
+
   return reply.view("admin/products/list.html", {
     credentials: req.auth.credentials,
     products,
@@ -64,7 +96,6 @@ internals.add = async function (req, reply) {
     }
     return reply.redirect(messageSuccess);
   } catch (err) {
-    console.log(err);
     return reply.redirect(messageError);
   }
 };

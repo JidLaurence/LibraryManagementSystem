@@ -15,7 +15,6 @@ internals.index = async function (req, reply) {
   })
     .populate("product_id user_id")
     .lean();
-  console.log(sales);
   return reply.view("admin/reserved/index.html", {
     credentials: req.auth.credentials,
     sales,

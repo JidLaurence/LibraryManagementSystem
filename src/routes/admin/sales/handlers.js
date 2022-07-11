@@ -9,7 +9,6 @@ function getTotal(sales) {
   let totalCost = 0,
     totalPrice = 0;
   sales.map((r) => {
-    console.log(r);
     totalCost += r.cost ? r.cost : 0;
     totalPrice += r.product_id.price ? r.product_id.price : 0;
   });

@@ -36,7 +36,6 @@ internals.update = async function (req, reply) {
   return reply.redirect(messageSuccess);
 };
 internals.delete = async function (req, reply) {
-  console.log(req.params._id);
   const stockInfo = await Stocks.findOne({
     _id: req.params._id,
   }).lean();
@@ -75,7 +74,6 @@ internals.delete = async function (req, reply) {
       },
     },
   ]);
-  console.log(stockInfo, stock, sales);
   const stockTotal = parseInt(stock.qty - stockInfo.qty);
   if (sales > stockTotal) {
     return reply({ status: false, message: "Stocks is used", icon: "error" });

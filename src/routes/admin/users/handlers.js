@@ -17,7 +17,6 @@ internals.add = async function (req, reply) {
   payload.password = Crypto.encrypt(req.payload.password);
   payload.scope = ["admin"];
   payload.isStatus = true;
-  console.log(payload);
   const user = await Users.create(payload);
   if (!user) {
     return reply.redirect(
@@ -35,7 +34,6 @@ internals.update = async function (req, reply) {
   if (req.payload.password) {
     payload.password = Crypto.encrypt(req.payload.password);
   }
-  console.log(payload);
   const user = await Users.findOneAndUpdate(
     {
       _id: req.payload._id,

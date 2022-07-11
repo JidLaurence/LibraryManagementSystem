@@ -10,7 +10,6 @@ internals.index = async function (req, reply) {
   let credentials = await Users.findOne({
     _id: req.auth.credentials._id,
   }).lean();
-  console.log(credentials);
   return reply.view("client/profile/index.html", {
     credentials,
   });
@@ -46,7 +45,6 @@ internals.update = async function (req, reply) {
 };
 
 internals.upload = async function (req, reply) {
-  console.log(req.payload);
   Image.uploadUser(req.payload.img, req.auth.credentials._id);
   await Users.update(
     { _id: req.auth.credentials._id },

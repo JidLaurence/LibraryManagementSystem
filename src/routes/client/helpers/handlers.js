@@ -92,7 +92,6 @@ internals.getSales = async function (req, reply) {
     .sort({ createdAt: -1 })
     .lean();
 
-  console.log(sales);
   return reply(sales);
 };
 module.exports = internals;

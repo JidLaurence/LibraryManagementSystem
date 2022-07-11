@@ -288,7 +288,6 @@ function appendRowSales(res, cartTable) {
   res.isReturn ? $(`#cart-date-return-${res._id}`).append(inputDateReturn) : "";
 }
 function appendAllSales(res, tableName, status, salesBtnName) {
-  console.log(res);
   res.createdAtDate = moment(res.createdAt).format("MMM DD, YYYY");
   res.createdAtTime = moment(res.createdAt).format("HH:MM");
   let viewOrEdit = $(`
@@ -484,7 +483,6 @@ function checkOutProduct() {
           "/admin/dashboard?message=Successfully checkout.&alert=success";
       },
     }).fail(function (res) {
-      console.log(res);
       errorSweetAlert();
     });
   }
@@ -510,7 +508,6 @@ function addToCart() {
           "/client/dashboard?message=Successfully add to cart.&alert=success";
       },
     }).fail(function (res) {
-      console.log(res);
       errorSweetAlert();
     });
   }
@@ -525,7 +522,6 @@ function getOneProduct(endpoints, id) {
       $(".unitSpan").html(res.unit_id.name);
     },
   }).fail(function (res) {
-    console.log(res);
     errorSweetAlert();
   });
 }
@@ -586,7 +582,6 @@ function delete_data(endpoints, _id) {
           });
         },
       }).fail(function (res) {
-        console.log(res);
         errorSweetAlert();
       });
     }
@@ -603,7 +598,6 @@ function acceptReturnItem(data) {
     cancelButtonColor: "#d33",
     confirmButtonText: "Yes, accept it!",
   }).then((result) => {
-    console.log(data);
     if (result.isConfirmed) {
       $.ajax({
         type: "POST",
