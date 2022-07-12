@@ -436,11 +436,11 @@ function appendAllSalesToReturn(res, tableName, status, salesBtnName) {
       } ${res.lastName ? res.lastName : ""}
       </p>`,
       `${res.createdAtDate}<small class="text-muted"> ${res.createdAtTime}</small>`,
-      `${res.total}`,
-      `<span class="badge badge-${
-        status == "pending" ? "warning" : "success"
-      }-lighten p-1">${status}</span>`,
-      `<span class="text-success">Reserved</span>`,
+      // `${res.total}`,
+      // `<span class="badge badge-${
+      //   status == "pending" ? "warning" : "success"
+      // }-lighten p-1">${status}</span>`,
+      `<span class="text-success">Borrowed</span>`,
       `<div id="viewOrEdit-${res.userId}"></div>`,
     ])
     .draw(false)

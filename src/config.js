@@ -26,7 +26,8 @@ module.exports = {
   },
   crypto: {
     privateKey: process.env.CRYPTO_PRIVATE_KEY,
-    tokenExpiry: 1 * 30 * 1000 * 60, //1 hour
+    tokenExpiry: 1 * 30 * 1000 * 60, //1 hour,
+    cookie: "9f32956280f700be779728f3742e969ce273beb01d8c",
   },
   validation: {
     username: /^[a-zA-Z0-9]{5,12}$/,
